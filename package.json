@@ -8,6 +8,7 @@
     "lint-staged": "^4.2.2",
     "moment": "^2.18.1",
     "prettier": "^1.7.0",
+    "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-big-calendar": "^0.15.0",
     "react-dom": "^15.6.1",
