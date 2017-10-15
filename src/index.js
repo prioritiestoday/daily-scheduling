@@ -11,7 +11,6 @@ import registerServiceWorker from './registerServiceWorker'
 const store$ = Observable.merge(fetchCalendarData$)
   .scan((state, reduceOperation) => reduceOperation(state), Map())
   .distinctUntilChanged((prev, current) => prev.equals(current))
-  .do(state => console.log('Blah,', state.toJS()))
   .publishReplay(1)
   .refCount()
 
@@ -19,10 +18,10 @@ store$
   .do(store => {
     ReactDOM.render(<App store={store} />, document.getElementById('root'))
   })
-  .subscribe(state => console.log('Updated state', state.toString()))
+  .subscribe(state => console.log('Updated state', state.toJS()))
 
 store$
   .let(persist$)
-  .subscribe(events => console.log('Persisted events', events.toString()))
+  .subscribe(events => console.log('Persisted events', events.toJS()))
 
 registerServiceWorker()

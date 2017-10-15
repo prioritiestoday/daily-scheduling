@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@hs/transmute": "^1.4.0",
+    "date-fns": "^2.0.0-alpha.7",
     "husky": "^0.14.3",
     "immutable": "^3.8.1",
     "lint-staged": "^4.2.2",
