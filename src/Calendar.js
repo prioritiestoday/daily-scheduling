@@ -3,6 +3,7 @@ import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import 'moment/locale/en-gb'
+import './Calendar.css'
 
 BigCalendar.momentLocalizer(moment)
 
@@ -16,7 +17,23 @@ export const Weekdays = {
   Sunday: 8,
 }
 
-const eventPropGetter = event => ({ className: { 'rbc-event-red': true } })
+export const Colour = {
+  Red: 'Red',
+  Green: 'Green',
+  Blue: 'Blue',
+  Purple: 'Purple',
+  Orange: 'Orange',
+}
+
+const eventPropGetter = event => ({
+  className: {
+    'rbc-event-red': event.colour === Colour.Red,
+    'rbc-event-green': event.colour === Colour.Green,
+    'rbc-event-blue': event.colour === Colour.Blue,
+    'rbc-event-purple': event.colour === Colour.Purple,
+    'rbc-event-orange': event.colour === Colour.Orange,
+  },
+})
 
 const toCalendarEvents = events =>
   events

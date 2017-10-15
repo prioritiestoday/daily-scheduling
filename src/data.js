@@ -1,18 +1,19 @@
 import { Observable } from 'rxjs/Rx'
 import { fromJS, Map } from 'immutable'
 import { defaultTo, pipe } from 'ramda'
-import { Weekdays } from './Calendar'
+import { Weekdays, Colour } from './Calendar'
 
 const initialCalendarData = fromJS({
   events: [
     {
-      title: 'Long Event',
-      when: { day: Weekdays.Monday, hour: 8, duration: 9 },
+      title: 'Development / Learning',
+      when: { day: Weekdays.Saturday, hour: 12, duration: 10 },
+      colour: Colour.Purple,
     },
     {
-      title: 'Meeting',
-      desc: 'Pre-meeting meeting, to prepare for the meeting',
-      when: { day: Weekdays.Tuesday, hour: 12, duration: 2 },
+      title: 'Rest',
+      when: { day: Weekdays.Saturday, hour: 6, duration: 6 },
+      colour: Colour.Red,
     },
   ],
 })
@@ -29,7 +30,6 @@ export const fetchCalendarData$ = Observable.defer(() =>
 )
   .reduce((acc, current) => acc.merge(current), Map())
   .map(data => store =>
-    console.log(data.toJS()) ||
     populateEvents(
       data.get('events'),
       store.set('defaultDate', data.get('defaultDate'))
